@@ -1,3 +1,4 @@
 function renderLinks(){
   fetchIndex()
+  postLink()
 }
