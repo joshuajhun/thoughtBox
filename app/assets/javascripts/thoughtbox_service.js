@@ -35,7 +35,6 @@ function clearField(){
 function deleteIdea(){
 $('#index').delegate("#delete-link", 'click', function(){
   var link = this.closest('#link')
-  debugger;
     $.ajax({
       type: 'DELETE',
        url: '/api/v1/links/'+ $(link).attr('data-id'),
@@ -84,5 +83,51 @@ function editLinkUrl(){
         },
       })
     }
+  })
+}
+var linkStatus = { unread: 0, read: 1}
+var statusTexts = {0: 'unread', 1: 'read'}
+
+function markAsRead(){
+  $('#index').delegate('.up', 'click', function(){
+    var linkId  = this.closest('#link')
+    var status = linkId.getElementsByClassName('status')[0].textContent
+    var changeStatus = linkId.getElementsByClassName('status')
+    var statusId = linkStatus[status]
+
+    statusId++
+    $.ajax({
+      type: 'PUT',
+      data: {status: statusId},
+      url: '/api/v1/links/'+ $(linkId).attr('data-id'),
+      success: function(){;
+          $(changeStatus).text(statusTexts[statusId])
+      },
+      error: function(xhr){
+        console.log(xhr.responseText)
+      }
+    })
+  })
+}
+function markAsUnread(){
+  $('#index').delegate('.down', 'click', function(){
+    var linkId  = this.closest('#link')
+    var status = linkId.getElementsByClassName('status')[0].textContent
+    var changeStatus = linkId.getElementsByClassName('status')
+    var statusId = linkStatus[status]
+
+    statusId--
+
+    $.ajax({
+      type: 'PUT',
+      data: {status: statusId},
+      url: '/api/v1/links/'+ $(linkId).attr('data-id'),
+      success: function(){;
+          $(changeStatus).text(statusTexts[statusId])
+      },
+      error: function(xhr){
+        console.log(xhr.responseText)
+      }
+    })
   })
 }

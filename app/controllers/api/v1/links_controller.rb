@@ -12,10 +12,10 @@ class Api::V1::LinksController < ApplicationController
     if valid(params['url'])
       respond_with current_user.links.create(link_params), location: nil
     else
-      flash[:error] = 'The url you inserted is not valid'
+      flash[:error] = 'The url you posted is not valid' # this is currently not working. look into this if possible.
     end
   end
-  
+
   def update
     respond_with current_user.links.update(params[:id], link_params)
   end

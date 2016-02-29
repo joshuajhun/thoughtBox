@@ -4,4 +4,6 @@ function renderLinks(){
   deleteIdea()
   editLinkName()
   editLinkUrl()
+  markAsRead()
+  markAsUnread()
 }

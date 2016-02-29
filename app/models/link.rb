@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
   belongs_to :user
-  enum quality: [:read, :unread]
+  enum status: [:unread, :read]
   default_scope -> {order(id: :desc)}
 end
