@@ -5,7 +5,7 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def show
-    respond_with Link.find_by(id: params[:id])
+    respond_with current_user.links.find_by(id: params[:id])
   end
 
   def create
