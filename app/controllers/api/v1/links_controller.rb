@@ -15,9 +15,9 @@ class Api::V1::LinksController < ApplicationController
       flash[:error] = 'The url you inserted is not valid'
     end
   end
-
-
+  
   def update
+    respond_with current_user.links.update(params[:id], link_params)
   end
 
   def destroy
