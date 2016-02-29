@@ -1,0 +1,3 @@
+function renderLinks(){
+  fetchIndex()
+}

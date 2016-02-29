@@ -1,12 +1,11 @@
 class Api::V1::LinksController < ApplicationController
   respond_to :json
-  @user = current_user
   def index
-    respond_with @current_user.links
+    respond_with current_user.links
   end
 
   def create
-    respond_with Link.create(link_params), location: nil
+    respond_with current_user.links.create(link_params), location: nil
   end
 
   def update
