@@ -13,10 +13,9 @@ $("#index").append(index)
 }
 
 function renderPost(newLink){
-
     $("#index").prepend(
       "<ul class='collection' id='link' data-id ='"+newLink.id+"'>"
-      +"<li class='collection-item' contenteditable='true' id='linkname'>"+newLink.name+"</li>"
+      +"<li class='collection-item' contenteditable='true' id='linkname'>"+newLink.title+"</li>"
       +"<li class='collection-item' contenteditable='true' id='linkbody'>"+newLink.url+"</li>"
       +"<button class='up'>+</button><button class='down'>-</button><li class='collection-item quality'>"+newLink.status+"</li>"
       +"<button class='btn waves-effect waves-light' type='submit' name='action' id='delete-link'>Delete</button>"

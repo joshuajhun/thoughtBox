@@ -9,7 +9,7 @@ class Api::V1::LinksController < ApplicationController
       respond_with current_user.links.create(link_params), location: nil
     else
       flash[:error] = 'The url you inserted is not valid'
-    end 
+    end
   end
 
   def update
