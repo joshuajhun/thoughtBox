@@ -67,3 +67,22 @@ function editLinkName(){
     }
   })
 }
+
+function editLinkUrl(){
+  $('#index').delegate('#linkurl', 'keydown',function(event){
+    var fireOnEnter = event.which == 13
+    if (fireOnEnter) {
+    var linkId = this.closest('#link')
+    var data = { url: this.textContent};
+    event.preventDefault();
+    this.blur()
+    $.ajax({
+      type: 'PUT',
+      data: data,
+       url: '/api/v1/links/'+ $(linkId).attr('data-id'),
+      success: function(something){
+        },
+      })
+    }
+  })
+}

@@ -3,4 +3,5 @@ function renderLinks(){
   postLink()
   deleteIdea()
   editLinkName()
+  editLinkUrl()
 }
