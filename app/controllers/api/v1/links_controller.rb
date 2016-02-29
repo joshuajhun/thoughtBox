@@ -4,6 +4,10 @@ class Api::V1::LinksController < ApplicationController
     respond_with current_user.links
   end
 
+  def show
+    respond_with Link.find_by(id: params[:id])
+  end
+
   def create
     if valid(params['url'])
       respond_with current_user.links.create(link_params), location: nil
@@ -12,10 +16,12 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+
   def update
   end
 
   def destroy
+    respond_with Link.destroy(params[:id])
   end
 
   private
